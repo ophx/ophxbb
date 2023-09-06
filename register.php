@@ -25,7 +25,7 @@
                 <button type="submit" class="transition-all duriation-150 px-4 py-2 rounded text-white font-medium text-center w-full flex items-center justify-center bg-purple-600 hover:bg-purple-700">
                     Get Started
                 </button>
-                <p class="text-gray-400">Already have an account? <a href="" class="transition-all duriation-150 hover:text-white">Login</a></p>
+                <p class="text-gray-400">Already have an account? <a href="/login" class="transition-all duriation-150 hover:text-white">Login</a></p>
             </form>
         </div>
     </main>
@@ -34,5 +34,4 @@
     <?php require_once("./components/footer.php"); ?>
 </body>
 <script src="https://cdn.tailwindcss.com/"></script>
-<script src="./assets/scramble.js"></script>
 </html>
