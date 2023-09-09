@@ -52,7 +52,7 @@ class TextScramble {
     }
 }
 const phrases = [
-    "\"The best cheat known to man\" -Indian Guy From Fiverr",
+    "lorem ipsum dolor sit amet, consectetur adipiscing elit, sed mag et just.",
 ];
 const el = document.querySelector(".scramble");
 const fx = new TextScramble(el);

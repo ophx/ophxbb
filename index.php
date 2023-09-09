@@ -23,6 +23,11 @@
             50% { transform: translate(0, 15px); }
             100% { transform: translate(0, -0px); }   
         }
+
+        .purple_sparkle {
+            text-shadow: 0px 0px 2px #9333EA, 0px 0px 3px #9333EA, 0px 0px 7px #9333EA, 0px 0px 5px #9333EA, 0px 0px 8px #9333EA, 0px 0px 8px #9333EA;
+            background: no-repeat, url(https://vacban.wtf/uploads/sparkles/sparkle_purple.gif);
+        }
     </style>
 </head>
 <body class="bg-[#0f0f0f]" style="font-family: 'Poppins', sans-serif !important;">
@@ -33,14 +38,7 @@
     <main class="text-center sm:container sm:px-32 sm:mx-auto flex w-full h-screen">
         <div class="m-auto">
             <p class="text-white text-5xl sm:text-6xl mb-4">
-                <?php echo $config->appName; ?>
-                <span 
-                    style="
-                        text-shadow: 0px 0px 2px #9333EA, 0px 0px 3px #9333EA, 0px 0px 7px #9333EA, 0px 0px 5px #9333EA, 0px 0px 8px #9333EA, 0px 0px 8px #9333EA;
-                        background: no-repeat, url(https://vacban.wtf/uploads/sparkles/sparkle_purple.gif);
-                    ">
-                .space
-                </span>
+                <?php echo $config->appName; ?><span class="purple_sparkle">.space</span>
             </p>
             <p class="text-gray-400 text-xl scramble"></p>
             <div class="flex gap-4 justify-center mt-4">
@@ -73,8 +71,8 @@
                     <p class="text-gray-400">Latest Member</p>
                 </div>
                 <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
-                    <p class="text-white text-xl">0</p>
-                    <p class="text-gray-400">Banned</p>
+                    <p class="text-white text-xl">Undetected</p>
+                    <p class="text-gray-400">Status</p>
                 </div>
             </div>
         </main>
