@@ -1,11 +1,12 @@
 <?php
+    $config = include_once("./server/s.config.php");
 ?>
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OphxBB</title>
+    <title><?php echo $config->appName; ?></title>
     <link rel="shortcut icon" href="https://cdn3.emoji.gg/emojis/5058-stonedyay.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,13 +32,22 @@
     <!-- Main Hero -->
     <main class="text-center sm:container sm:px-32 sm:mx-auto flex w-full h-screen">
         <div class="m-auto">
-            <p class="text-white text-5xl sm:text-6xl mb-4">OphxBB<span style="text-shadow: 0px 0px 2px #9333EA, 0px 0px 3px #9333EA, 0px 0px 7px #9333EA, 0px 0px 5px #9333EA, 0px 0px 8px #9333EA, 0px 0px 8px #9333EA; background: no-repeat, url(https://vacban.wtf/uploads/sparkles/sparkle_purple.gif);">.space</span></p>
+            <p class="text-white text-5xl sm:text-6xl mb-4">
+                <?php echo $config->appName; ?>
+                <span 
+                    style="
+                        text-shadow: 0px 0px 2px #9333EA, 0px 0px 3px #9333EA, 0px 0px 7px #9333EA, 0px 0px 5px #9333EA, 0px 0px 8px #9333EA, 0px 0px 8px #9333EA;
+                        background: no-repeat, url(https://vacban.wtf/uploads/sparkles/sparkle_purple.gif);
+                    ">
+                .space
+                </span>
+            </p>
             <p class="text-gray-400 text-xl scramble"></p>
             <div class="flex gap-4 justify-center mt-4">
                 <a href="/register" class="transition-all duriation-150 px-4 py-2 rounded text-white font-medium text-center flex items-center justify-center bg-purple-600 hover:bg-purple-700">
                     Get Started!
                 </a>
-                <a href="https://discord.gg/cntHjp32WV" target="_blank" class="transition-all duriation-150 px-4 py-2 rounded text-white font-medium text-center flex items-center justify-center bg-purple-600 hover:bg-purple-700">
+                <a href="https://discord.gg/" target="_blank" class="transition-all duriation-150 px-4 py-2 rounded text-white font-medium text-center flex items-center justify-center bg-purple-600 hover:bg-purple-700">
                     Discord
                 </a>
             </div>
@@ -56,7 +66,7 @@
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 items-start">
                 <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
                     <p class="text-white text-xl">0</p>
-                    <p class="text-gray-400">User</p>
+                    <p class="text-gray-400">Users</p>
                 </div>
                 <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
                     <p class="text-white text-xl">null</p>
@@ -131,7 +141,7 @@
 
         <!-- Ready To Use Us? c: -->
         <main class="text-center sm:container sm:px-32 sm:mx-auto">
-            <p class="text-white text-3xl mb-4">Ready To Use OphxBB?</p>
+            <p class="text-white text-3xl mb-4">Ready To Use <?php echo $config->appName; ?>?</p>
             <a href="/register" class="transition-all duriation-150 px-4 py-2 rounded text-white font-medium text-center items-center justify-center bg-purple-600 hover:bg-purple-700">
                 Get Started!
             </a>
