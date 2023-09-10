@@ -1,5 +1,6 @@
 <?php
     $config = include_once("./server/s.config.php");
+
     require_once("./server/s.db.php");
 
     $user_num_query = mysqli_query($mysqli, "SELECT count(1) FROM `users`");
@@ -15,7 +16,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $config->appName; ?></title>
+    <title><?php echo htmlspecialchars($config->appName); ?></title>
     <link rel="shortcut icon" href="https://cdn3.emoji.gg/emojis/5058-stonedyay.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -53,7 +54,7 @@
         <main class="text-center sm:container sm:px-32 sm:mx-auto flex w-full h-screen">
             <div class="m-auto">
                 <p class="text-white text-5xl sm:text-6xl mb-4">
-                    <?php echo $config->appName; ?><span class="purple_sparkle">.space</span>
+                    <?php echo htmlspecialchars($config->appName); ?><span class="purple_sparkle">.space</span>
                 </p>
                 <p class="text-gray-400 text-xl scramble"></p>
                 <div class="flex gap-4 justify-center mt-4">
@@ -78,11 +79,11 @@
                 <p class="text-white text-3xl mb-4">Statistics</p>
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 items-start">
                     <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
-                        <p class="text-white text-xl"><?php echo $user_num; ?></p>
+                        <p class="text-white text-xl"><?php echo htmlspecialchars($user_num); ?></p>
                         <p class="text-gray-400">Users</p>
                     </div>
                     <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
-                        <p class="text-white text-xl"><?php echo $latest_mem; ?></p>
+                        <p class="text-white text-xl"><?php echo htmlspecialchars($latest_mem); ?></p>
                         <p class="text-gray-400">Latest Member</p>
                     </div>
                     <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
@@ -155,7 +156,7 @@
 
             <!-- Ready To Use Us? c: -->
             <main class="text-center sm:container sm:px-32 sm:mx-auto">
-                <p class="text-white text-3xl mb-4">Ready To Use <?php echo $config->appName; ?>?</p>
+                <p class="text-white text-3xl mb-4">Ready To Use <?php echo htmlspecialchars($config->appName); ?>?</p>
                 <a href="/register" class="transition-all duriation-150 px-4 py-2 rounded text-white font-medium text-center items-center justify-center bg-purple-600 hover:bg-purple-700">
                     Get Started!
                 </a>

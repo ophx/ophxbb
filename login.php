@@ -1,12 +1,14 @@
 <?php
     $config = include_once("./server/s.config.php");
+
+    require_once("./server/s.db.php");
 ?>
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo $config->appName; ?></title>
+    <title><?php echo htmlspecialchars($config->appName); ?></title>
     <link rel="shortcut icon" href="https://cdn3.emoji.gg/emojis/5058-stonedyay.png" type="image/png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
