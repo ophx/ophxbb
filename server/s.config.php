@@ -1,9 +1,9 @@
 <?php
     return (object) array(
-        "host" => "",
-        "username" => "",
+        "host" => "localhost",
+        "username" => "root",
         "password" => "",
-        "database" => "",
+        "database" => "ophxbb_panel",
         "appName" => "OphxBB",
         "recaptcha_sitekey" => "6Le4XRIoAAAAAMPZgLr4RIb1tKl4iMb8g3piOfWJ",
     );

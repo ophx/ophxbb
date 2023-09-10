@@ -1,2 +1,8 @@
 # OphxBB
-#### A Cheat Panel Template. Written In PHP Cus I Was Bored ASFFFFFFFFFFFFFFFFFFFFFF LMAOOO
+#### A Cheat Panel Template.
+# Features:
+#### Good looking homepage 😎
+#### User Friendly Dashboard
+#### Loader API
+#### Admin Panel
+#### Still In Development! :)
