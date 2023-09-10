@@ -12,38 +12,47 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
-<body class="bg-[#0f0f0f]" style="font-family: 'Poppins', sans-serif !important;">
-    <!-- Main Hero -->
-    <main class="text-center sm:container sm:px-32 sm:mx-auto flex w-full h-screen">
-        <div class="m-auto">
-            <p class="text-white text-4xl">Login</p>
-            <p class="text-gray-400 mb-4">Welcome Back!</p>
-            <form action="login" method="post" class="space-y-4">
-                <input type="text" name="username" id="username" placeholder="Username" class="transition-all duriation-150 px-4 py-2 rounded text-white placeholder-gray-400 font-medium w-full flex outline-none border-none shadow-lg bg-[#1f1f1f]">
-                <div class="flex">
-                    <input type="password" name="password" id="password" placeholder="Password" class="transition-all duriation-150 px-4 py-2 rounded-l text-white placeholder-gray-400 font-medium w-full flex outline-none border-none shadow-lg bg-[#1f1f1f]">
-                    <div onclick="showHidePassword()" id="showhide" class="select-none text-sm cursor-pointer transition-all duriation-150 px-4 py-2 rounded-r text-white placeholder-gray-400 font-medium flex items-center outline-none border-none shadow-lg bg-[#2f2f2f]">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 mr-1">
-                            <path d="M12 15a3 3 0 100-6 3 3 0 000 6z" />
-                            <path fill-rule="evenodd" d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 010-1.113zM17.25 12a5.25 5.25 0 11-10.5 0 5.25 5.25 0 0110.5 0z" clip-rule="evenodd" />
-                        </svg>
-                        Show
-                    </div>
-                </div>
-                <div class="g-recaptcha" data-theme="dark" data-sitekey="<?php echo htmlspecialchars($config->recaptcha_sitekey); ?>" data-action="LOGIN"></div>
-                <button type="submit" class="transition-all duriation-150 px-4 py-2 rounded text-white font-medium text-center w-full flex items-center justify-center bg-purple-600 hover:bg-purple-700">
-                    Login
-                </button>
-                <p class="text-gray-400">Don't have an account? <a href="/register" class="transition-all duriation-150 hover:text-white font-medium">Register</a></p>
-            </form>
-        </div>
-    </main>
+<body class="bg-[#0f0f0f]" style="font-family: 'Poppins', sans-serif !important;" onload="spin()">
+    <!-- Loader -->
+    <div class="spinner">
+        <?php require_once("./components/spinner.php"); ?>
+    </div>
 
-    <!-- Footer -->
-    <?php require_once("./components/footer.php"); ?>
+    <div class="main hidden">
+        <!-- Main Hero -->
+        <main class="text-center sm:container sm:px-32 sm:mx-auto flex w-full h-screen">
+            <div class="m-auto">
+                <p class="text-white text-4xl">Login</p>
+                <p class="text-gray-400 mb-4">Welcome Back!</p>
+                <form action="login" method="post" class="space-y-4">
+                    <input type="text" name="username" id="username" placeholder="Username" class="transition-all duriation-150 px-4 py-2 rounded text-white placeholder-gray-400 font-medium w-full flex outline-none border-none shadow-lg bg-[#1f1f1f]">
+                    <div class="flex">
+                        <input type="password" name="password" id="password" placeholder="Password" class="transition-all duriation-150 px-4 py-2 rounded-l text-white placeholder-gray-400 font-medium w-full flex outline-none border-none shadow-lg bg-[#1f1f1f]">
+                        <div onclick="showHidePassword()" id="showhide" class="select-none text-sm cursor-pointer transition-all duriation-150 px-4 py-2 rounded-r text-white placeholder-gray-400 font-medium flex items-center outline-none border-none shadow-lg bg-[#2f2f2f]">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4 mr-1">
+                                <path d="M12 15a3 3 0 100-6 3 3 0 000 6z" />
+                                <path fill-rule="evenodd" d="M1.323 11.447C2.811 6.976 7.028 3.75 12.001 3.75c4.97 0 9.185 3.223 10.675 7.69.12.362.12.752 0 1.113-1.487 4.471-5.705 7.697-10.677 7.697-4.97 0-9.186-3.223-10.675-7.69a1.762 1.762 0 010-1.113zM17.25 12a5.25 5.25 0 11-10.5 0 5.25 5.25 0 0110.5 0z" clip-rule="evenodd" />
+                            </svg>
+                            Show
+                        </div>
+                    </div>
+                    <div class="g-recaptcha" data-theme="dark" data-sitekey="<?php echo htmlspecialchars($config->recaptcha_sitekey); ?>" data-action="LOGIN"></div>
+                    <button type="submit" class="transition-all duriation-150 px-4 py-2 rounded text-white font-medium text-center w-full flex items-center justify-center bg-purple-600 hover:bg-purple-700">
+                        Login
+                    </button>
+                    <p class="text-gray-400">Don't have an account? <a href="/register" class="transition-all duriation-150 hover:text-white font-medium">Register</a></p>
+                </form>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <?php require_once("./components/footer.php"); ?>
+    </div>
 </body>
 <script src="https://cdn.tailwindcss.com/"></script>
 <script src="https://www.google.com/recaptcha/enterprise.js" async defer></script>
+<script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+<script src="./assets/spinner.js"></script>
 <script>
     function showHidePassword() {
         var input = document.getElementById("password");
