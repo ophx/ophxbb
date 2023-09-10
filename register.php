@@ -3,12 +3,19 @@
 
     require_once("./server/s.db.php");
 
+    session_start();
+
+    if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+        header("location: /dashboard/");
+        exit;
+    }
+
     if (isset($_POST["register"])) {
         $username = mysqli_escape_string($mysqli, $_POST["username"]);
         $password = mysqli_escape_string($mysqli, $_POST["password"]);
         $confirm_password = mysqli_escape_string($mysqli, $_POST["confirm_password"]);
 
-        
+
     }
 ?>
 <!DOCTYPE html>

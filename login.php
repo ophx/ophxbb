@@ -2,6 +2,60 @@
     $config = include_once("./server/s.config.php");
 
     require_once("./server/s.db.php");
+
+    session_start();
+
+    if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
+        header("location: /dashboard/");
+        exit;
+    }
+
+    $err = $username_err = $password_err = "";
+    if (isset($_POST["login"])) {
+        $username = mysqli_escape_string($mysqli, $_POST["username"]);
+        $password = mysqli_escape_string($mysqli, $_POST["password"]);
+
+        if ($stmt = $mysqli->prepare("SELECT * FROM users WHERE username = ?")) {
+            $stmt->bind_param("s", $param_username);
+            $param_username = $username;
+            if ($stmt->execute()) {
+                $stmt->store_result();
+                if ($stmt->num_rows == 1) {
+                    $stmt->bind_result($id, $username, $hashed_password, $avatar, $role);
+                    if ($stmt->fetch()) {
+                        if (password_verify($password, $hashed_password)) {
+                            session_start();
+                            $_SESSION["loggedin"] = true;
+                            $_SESSION["id"] = $id;
+                            $_SESSION["username"] = $username;
+                            $_SESSION["hashed_password"] = $hashed_password;
+                            $_SESSION["avatar"] = $avatar;
+                            $_SESSION["role"] = $role;
+
+                            if (!empty($_POST["remember_me"])) {
+                                $rememberMe = $_POST["remember_me"];
+                                setcookie("username", $username, time() + 3600 * 34 * 7);
+                                setcookie("password", $password, time() + 3600 * 34 * 7);
+                            } else {
+                                setcookie("username", $username, 1);
+                                setcookie("password", $password, 1);
+                            }
+
+                            header("location: /dashboard/");
+                        } else {
+                            $password_err = "Invalid username or password!";
+                        }
+                    }
+                } else {
+                    $username_err = "Invalid username or password!";
+                }
+            } else {
+                $err = "Could not execute!";
+            }
+            $stmt->close();
+        }
+        $mysqli->close();
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
@@ -27,9 +81,9 @@
                 <p class="text-white text-4xl">Login</p>
                 <p class="text-gray-400 mb-4">Welcome Back!</p>
                 <form action="login" method="post" class="space-y-4">
-                    <input type="text" name="username" id="username" placeholder="Username" class="transition-all duriation-150 px-4 py-2 rounded text-white placeholder-gray-400 font-medium w-full flex outline-none border-none shadow-lg bg-[#1f1f1f]">
+                    <input value="<?php if (isset($_COOKIE["username"])) { echo $_COOKIE["username"]; } ?>" type="text" name="username" id="username" placeholder="Username" class="transition-all duriation-150 px-4 py-2 rounded text-white placeholder-gray-400 font-medium w-full flex outline-none border-none shadow-lg bg-[#1f1f1f]">
                     <div class="flex">
-                        <input type="password" name="password" id="password" placeholder="Password" class="transition-all duriation-150 px-4 py-2 rounded-l text-white placeholder-gray-400 font-medium w-full flex outline-none border-none shadow-lg bg-[#1f1f1f]">
+                        <input value="<?php if (isset($_COOKIE["password"])) { echo $_COOKIE["password"]; } ?>" type="password" name="password" id="password" placeholder="Password" class="transition-all duriation-150 px-4 py-2 rounded-l text-white placeholder-gray-400 font-medium w-full flex outline-none border-none shadow-lg bg-[#1f1f1f]">
                         <div onclick="showHidePassword()" id="showhide" class="select-none text-sm cursor-pointer transition-all duriation-150 px-4 py-2 rounded-r text-gray-400 hover:text-white placeholder-gray-400 font-medium flex items-center outline-none border-none shadow-lg bg-[#1f1f1f]">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
                                 <path d="M12 15a3 3 0 100-6 3 3 0 000 6z" />
@@ -38,11 +92,24 @@
                         </div>
                     </div>
                     <div class="g-recaptcha" data-theme="dark" data-sitekey="<?php echo htmlspecialchars($config->recaptcha_sitekey); ?>" data-action="LOGIN"></div>
-                    <button type="submit" class="transition-all duriation-150 px-4 py-2 rounded text-white font-medium text-center w-full flex items-center justify-center bg-purple-600 hover:bg-purple-700">
+                    <div class="flex items-start select-none">
+                        <div class="flex items-center h-5">
+                            <input checked id="remember_me" aria-describedby="remember_me" name="remember_me" type="checkbox" class="transition-all duriation-150 peer relative appearance-none shrink-0 w-5 h-5 border-transparent checked:border-2 checked:border-purple-600 checked:bg-purple-600 bg-[#1f1f1f] outline-none rounded ring-none checked:border-0">
+                        </div>
+                        <div class="ml-3">
+                            <label for="remember_me" class="text-gray-400">Remember Me</label>
+                        </div>
+                    </div>
+                    <button type="submit" name="login" class="transition-all duriation-150 px-4 py-2 rounded text-white font-medium text-center w-full flex items-center justify-center bg-purple-600 hover:bg-purple-700">
                         Login
                     </button>
                     <p class="text-gray-400">Don't have an account? <a href="/register" class="transition-all duriation-150 hover:text-white font-medium">Register</a></p>
                 </form>
+                <p class="text-red-600">
+                    <?php echo htmlspecialchars($err); ?>
+                    <?php echo htmlspecialchars($username_err); ?>
+                    <?php echo htmlspecialchars($password_err); ?>
+                </p>
             </div>
         </main>
 
