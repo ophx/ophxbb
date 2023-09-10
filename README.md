@@ -6,6 +6,6 @@
 
 # Todo
 - [x] Home Page
-- [] C++ Loader API
-- [] Subscriptions
-- [] Dashboard
+- [ ] C++ Loader API
+- [ ] Subscriptions
+- [ ] Dashboard
