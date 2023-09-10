@@ -1,7 +1,7 @@
 # OphxBB
 #### A Cheat Panel Template.
 
-# Admin Login:
+# Default Login:
 ```
 Username: admin
 Password: 1
