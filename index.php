@@ -75,7 +75,7 @@
 
         <div class="space-y-60">
             <!-- Statistics -->
-            <main class="text-center sm:container sm:px-32 sm:mx-auto">
+            <main id="statistics" class="text-center sm:container sm:px-32 sm:mx-auto">
                 <p class="text-white text-3xl mb-4">Statistics</p>
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 items-start">
                     <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
@@ -94,7 +94,7 @@
             </main>
 
             <!-- Features -->
-            <main class="text-center sm:container sm:px-32 sm:mx-auto">
+            <main id="features" class="text-center sm:container sm:px-32 sm:mx-auto">
                 <p class="text-white text-3xl mb-4">Features</p>
                 <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 items-start">
                     <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
