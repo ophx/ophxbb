@@ -1,5 +1,5 @@
 # OphxBB
-#### A Cheat Panel Template.
+#### A Cheat Panel Template  (With Mobile Styling).
 
 # Default Login:
 ```
