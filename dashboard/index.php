@@ -33,8 +33,29 @@
             <div>
                 <?php require_once("../components/dashboard/sidebar.php"); ?>
             </div>
-            <div class="ml-64 p-4">
-                <p class="text-white">hi</p>
+            <div class="ml-64 p-4 w-full">
+                <div class="space-y-4">
+                    <?php require_once("../components/dashboard/header.php"); ?>
+
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
+                            <p class="text-white text-xl">nick is gay</p>
+                            <p class="text-gray-400">MOTD</p>
+                        </div>
+                        <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
+                            <p class="text-white text-xl">1337</p>
+                            <p class="text-gray-400">Registered Today</p>
+                        </div>
+                        <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
+                            <p class="text-white text-xl">1337</p>
+                            <p class="text-gray-400">Logged In Today</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
+                        <p class="text-white text-xl">Chatbox</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

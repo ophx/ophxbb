@@ -28,7 +28,7 @@
                     <div class="border-b border-[#2f2f2f]"></div>
                 </li>
                 <li>
-                    <a href="/logout" class="transition-all duriation-150 flex items-center p-2 text-base font-medium <?php if($page==''){echo 'text-purple-600';}else{echo 'text-gray-400 hover:text-purple-600';} ?>">
+                    <a href="/logout" class="transition-all duriation-150 flex items-center p-2 text-base font-medium <?php if($page==''){echo 'text-red-600';}else{echo 'text-gray-400 hover:text-red-600';} ?>">
                         Logout
                     </a>
                 </li>
