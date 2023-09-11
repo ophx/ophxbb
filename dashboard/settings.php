@@ -9,6 +9,37 @@
         header("location: /");
         exit;
     }
+
+    $err = $msg = "";
+    if (isset($_POST["change_password"])) {
+        $old_password = mysqli_escape_string($mysqli, $_POST["old_password"]);
+        $new_password = mysqli_escape_string($mysqli, $_POST["new_password"]);
+        $confirm_new_password = mysqli_escape_string($mysqli, $_POST["confirm_new_password"]);
+        $id = mysqli_escape_string($mysqli, $_SESSION["id"]);
+
+        if ($new_password == $confirm_new_password) {
+            $stmt = $mysqli->prepare("SELECT * FROM users WHERE id = ?");
+            $stmt->bind_param("i", $id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $row = $result->fetch_assoc();
+            if (!empty($row)) {
+                $hashedPassword = $row["password"];
+                $password = password_hash($new_password, PASSWORD_DEFAULT);
+                if (password_verify($old_password, $hashedPassword)) {
+                    $stmt = $mysqli->prepare("UPDATE users SET password = ? WHERE id = ?");
+                    $stmt->bind_param("si", $password, $id);
+                    $stmt->execute();
+                    $msg = "Changed Password Successfully!";
+                    header("location: /logout");
+                } else {
+                    $err = "Invalid Password!";
+                }
+            }
+        } else {
+            $err = "New Passwords Do Not Match!";
+        }
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
@@ -37,8 +68,24 @@
                 <div class="space-y-4">
                     <?php require_once("../components/dashboard/header.php"); ?>
 
-                    <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
-                        <p class="text-white text-xl">Settings</p>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
+                            <p class="text-white text-xl">Change Password</p>
+                            <form action="settings" method="post" class="space-y-4">
+                                <input type="password" name="old_password" id="old_password" placeholder="Current Password" class="transition-all duriation-150 px-4 py-2 rounded text-white placeholder-gray-400 font-medium w-full flex outline-none border-none shadow-lg bg-[#2f2f2f]">
+                                <input type="password" name="new_password" id="new_password" placeholder="New Password" class="transition-all duriation-150 px-4 py-2 rounded text-white placeholder-gray-400 font-medium w-full flex outline-none border-none shadow-lg bg-[#2f2f2f]">
+                                <input type="password" name="confirm_new_password" id="confirm_new_password" placeholder="Confirm New Password" class="transition-all duriation-150 px-4 py-2 rounded text-white placeholder-gray-400 font-medium w-full flex outline-none border-none shadow-lg bg-[#2f2f2f]">
+                                <button type="submit" name="change_password" class="transition-all duriation-150 px-4 py-2 rounded text-white font-medium text-center w-full flex items-center justify-center bg-purple-600 hover:bg-purple-700">
+                                    Update
+                                </button>
+                                <p class="text-red-600">
+                                    <?php echo htmlspecialchars($err); ?>
+                                </p>
+                                <p class="text-green-600">
+                                    <?php echo htmlspecialchars($msg); ?>
+                                </p>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>

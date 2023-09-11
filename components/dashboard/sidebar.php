@@ -50,7 +50,7 @@
                     <?php } ?>
                 </div>
                 <div>
-                    <p class="text-white"><?php echo htmlspecialchars($_SESSION["username"]); ?></p>
+                    <p class="text-white"><?php echo htmlspecialchars($_SESSION["username"]); ?> <span class="text-gray-400">(<?php echo htmlspecialchars($_SESSION["role"]); ?>)</span></p>
                     <p class="text-gray-400 text-sm">UID <?php echo htmlspecialchars($_SESSION["id"]); ?></p>
                 </div>
             </div>

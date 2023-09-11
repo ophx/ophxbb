@@ -21,7 +21,7 @@
             if ($stmt->execute()) {
                 $stmt->store_result();
                 if ($stmt->num_rows == 1) {
-                    $stmt->bind_result($id, $username, $hashed_password, $avatar, $role);
+                    $stmt->bind_result($id, $username, $hashed_password, $created_at, $avatar, $role);
                     if ($stmt->fetch()) {
                         if (password_verify($password, $hashed_password)) {
                             session_start();
@@ -29,6 +29,7 @@
                             $_SESSION["id"] = $id;
                             $_SESSION["username"] = $username;
                             $_SESSION["hashed_password"] = $hashed_password;
+                            $_SESSION["created_at"] = $created_at;
                             $_SESSION["avatar"] = $avatar;
                             $_SESSION["role"] = $role;
 
