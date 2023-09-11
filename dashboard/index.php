@@ -54,6 +54,14 @@
 
                     <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
                         <p class="text-white text-xl">Chatbox</p>
+                        <div class="h-[300px] overflow-y-auto overflow-x-hidden">
+                            <div id="chat"></div>
+                        </div>
+                        <div class="mt-4">
+                            <form action="" method="post">
+                                <input type="text" name="message" id="message" placeholder="Whats On Your Mind?" maxlength="255" autocomplete="off" class="transition-all duriation-150 px-4 py-2 rounded text-white placeholder-gray-400 font-medium w-full flex outline-none border-none shadow-lg bg-[#2f2f2f]">
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
