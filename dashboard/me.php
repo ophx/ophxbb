@@ -9,6 +9,8 @@
         header("location: /");
         exit;
     }
+
+    require_once("../components/dashboard/functions.php");
 ?>
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
@@ -51,7 +53,10 @@
                             <div>
                                 <p class="text-white text-xl"><?php echo htmlspecialchars($_SESSION["username"]); ?> <span class="text-gray-400">(<?php echo htmlspecialchars($_SESSION["role"]); ?>)</span></p>
                                 <p class="text-gray-400">UID <?php echo htmlspecialchars($_SESSION["id"]); ?></p>
-                                <p class="text-gray-400">Registered: <?php echo htmlspecialchars($_SESSION["created_at"]); ?></p>
+                                <p class="text-gray-400">Registered: <?php
+                                                                        $d = strtotime(htmlspecialchars($_SESSION["created_at"]));
+                                                                        echo timeAgo($d);
+                                                                    ?></p>
                             </div>
                         </div>
                     </div>

@@ -42,7 +42,7 @@
                                 setcookie("password", $password, 1);
                             }
 
-                            header("location: /dashboard/");
+                            header("location: /welcome");
                         } else {
                             $password_err = "Invalid username or password!";
                         }
