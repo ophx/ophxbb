@@ -9,9 +9,3 @@ Password: 11
 
 # Features:
 #### Still In Development! :)
-
-# Todo
-- [x] Home Page
-- [ ] C++ Loader API
-- [ ] Subscriptions
-- [X] Dashboard
