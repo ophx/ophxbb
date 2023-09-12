@@ -20,6 +20,11 @@
                     </a>
                 </li>
                 <li>
+                    <a href="/dashboard/me" class="transition-all duriation-150 flex items-center p-2 text-base font-medium <?php if($page=='me.php'){echo 'text-purple-600';}else{echo 'text-gray-400 hover:text-purple-600';} ?>">
+                        Profile
+                    </a>
+                </li>
+                <li>
                     <a href="/dashboard/settings" class="transition-all duriation-150 flex items-center p-2 text-base font-medium <?php if($page=='settings.php'){echo 'text-purple-600';}else{echo 'text-gray-400 hover:text-purple-600';} ?>">
                         Settings
                     </a>
