@@ -14,4 +14,4 @@ Password: 1
 - [x] Home Page
 - [ ] C++ Loader API
 - [ ] Subscriptions
-- [ ] Dashboard
+- [X] Dashboard
