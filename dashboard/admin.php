@@ -9,10 +9,15 @@
         header("HTTP/1.0 403 Forbidden", TRUE, 403);
         exit;
     }
-    
+
     if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
         header("location: /");
         exit;
+    }
+
+    $err = $msg = "";
+    if (isset($_POST["change_motd"])) {
+
     }
 ?>
 <!DOCTYPE html>
@@ -43,8 +48,22 @@
                 <div class="space-y-4">
                     <?php require_once("../components/dashboard/header.php"); ?>
 
-                    <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
-                        <p class="text-white text-xl">Admin Panel</p>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
+                            <p class="text-white text-xl">Change MOTD</p>
+                            <form action="admin" method="post" class="space-y-4">
+                                <input type="password" name="new_motd" id="new_motd" placeholder="New MOTD" class="transition-all duriation-150 px-4 py-2 rounded text-white placeholder-gray-400 font-medium w-full flex outline-none border-none shadow-lg bg-[#2f2f2f]">
+                                <button type="submit" name="change_motd" class="transition-all duriation-150 px-4 py-2 rounded text-white font-medium text-center w-full flex items-center justify-center bg-purple-600 hover:bg-purple-700">
+                                    Update
+                                </button>
+                                <p class="text-red-600">
+                                    <?php echo htmlspecialchars($err); ?>
+                                </p>
+                                <p class="text-green-600">
+                                    <?php echo htmlspecialchars($msg); ?>
+                                </p>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
