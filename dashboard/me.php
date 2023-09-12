@@ -41,7 +41,7 @@
                         <div class="flex items-center gap-4">
                             <div>
                                 <div class="w-[75px]">
-                                    <div class="relative h-[75px] w-[75px] overflow-hidden bg-[#3f3f3f] rounded shadow-lg">
+                                    <div class="relative h-[75px] w-[75px] overflow-hidden bg-[#2f2f2f] rounded shadow-lg">
                                         <svg class="absolute h-[75px] w-[75px] text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                                             <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
                                         </svg>
