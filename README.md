@@ -4,7 +4,7 @@
 # Default Login:
 ```
 Username: admin
-Password: 1
+Password: 11
 ```
 
 # Features:
