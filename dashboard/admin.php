@@ -17,7 +17,13 @@
 
     $err = $msg = "";
     if (isset($_POST["change_motd"])) {
-
+        $new_motd = $_POST["new_motd"];
+        try {
+            mysqli_query($mysqli, "UPDATE motd SET message='$new_motd'");
+            $msg = "Updated MOTD Successfully!";
+        } catch (\Exception $e) {
+            $err = $e->getMessage();
+        }
     }
 ?>
 <!DOCTYPE html>
@@ -52,16 +58,20 @@
                         <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
                             <p class="text-white text-xl">Change MOTD</p>
                             <form action="admin" method="post" class="space-y-4">
-                                <input type="password" name="new_motd" id="new_motd" placeholder="New MOTD" class="transition-all duriation-150 px-4 py-2 rounded text-white placeholder-gray-400 font-medium w-full flex outline-none border-none shadow-lg bg-[#2f2f2f]">
+                                <input autocomplete="off" type="text" name="new_motd" id="new_motd" placeholder="New MOTD" class="transition-all duriation-150 px-4 py-2 rounded text-white placeholder-gray-400 font-medium w-full flex outline-none border-none shadow-lg bg-[#2f2f2f]">
                                 <button type="submit" name="change_motd" class="transition-all duriation-150 px-4 py-2 rounded text-white font-medium text-center w-full flex items-center justify-center bg-purple-600 hover:bg-purple-700">
                                     Update
                                 </button>
-                                <p class="text-red-600">
-                                    <?php echo htmlspecialchars($err); ?>
-                                </p>
-                                <p class="text-green-600">
-                                    <?php echo htmlspecialchars($msg); ?>
-                                </p>
+                                <?php if (!empty($err)) { ?>
+                                    <p class="text-red-600">
+                                        <?php echo htmlspecialchars($err); ?>
+                                    </p>
+                                <?php } ?>
+                                <?php if (!empty($msg)) { ?>
+                                    <p class="text-green-600">
+                                        <?php echo htmlspecialchars($msg); ?>
+                                    </p>
+                                <?php } ?>
                             </form>
                         </div>
                     </div>

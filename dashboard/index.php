@@ -9,6 +9,8 @@
         header("location: /");
         exit;
     }
+
+    $motd = mysqli_query($mysqli, "SELECT * FROM motd");
 ?>
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
@@ -39,10 +41,12 @@
                     <?php require_once("../components/dashboard/header.php"); ?>
 
                     <div class="grid grid-cols-3 gap-4">
-                        <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
-                            <p class="text-white text-xl">nick is gay</p>
-                            <p class="text-gray-400">MOTD</p>
-                        </div>
+                        <?php while ($row = mysqli_fetch_array($motd)) { ?>
+                            <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
+                                <p class="text-white text-xl"><?php echo htmlspecialchars($row["message"]); ?></p>
+                                <p class="text-gray-400">MOTD</p>
+                            </div>
+                        <?php } ?>
                         <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
                             <p class="text-white text-xl">1337</p>
                             <p class="text-gray-400">Registered Today</p>

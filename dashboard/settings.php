@@ -79,12 +79,16 @@
                                 <button type="submit" name="change_password" class="transition-all duriation-150 px-4 py-2 rounded text-white font-medium text-center w-full flex items-center justify-center bg-purple-600 hover:bg-purple-700">
                                     Update
                                 </button>
-                                <p class="text-red-600">
-                                    <?php echo htmlspecialchars($err); ?>
-                                </p>
-                                <p class="text-green-600">
-                                    <?php echo htmlspecialchars($msg); ?>
-                                </p>
+                                <?php if (!empty($err)) { ?>
+                                    <p class="text-red-600">
+                                        <?php echo htmlspecialchars($err); ?>
+                                    </p>
+                                <?php } ?>
+                                <?php if (!empty($msg)) { ?>
+                                    <p class="text-green-600">
+                                        <?php echo htmlspecialchars($msg); ?>
+                                    </p>
+                                <?php } ?>
                             </form>
                         </div>
                     </div>
