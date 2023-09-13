@@ -50,7 +50,7 @@
                     <button type="submit" name="register" class="transition-all duriation-150 px-4 py-2 rounded text-white font-medium text-center w-full flex items-center justify-center bg-purple-600 hover:bg-purple-700">
                         Get Started
                     </button>
-                    <p class="text-gray-400">Already have an account? <a href="/login" class="transition-all duriation-150 hover:text-white font-medium">Login</a></p>
+                    <p class="text-gray-400">Already Have An Account? <a href="/login" class="transition-all duriation-150 hover:text-white font-medium">Login</a></p>
                 </form>
             </div>
         </main>

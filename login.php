@@ -105,7 +105,7 @@
                     <button type="submit" name="login" class="transition-all duriation-150 px-4 py-2 rounded text-white font-medium text-center w-full flex items-center justify-center bg-purple-600 hover:bg-purple-700">
                         Login
                     </button>
-                    <p class="text-gray-400">Don't have an account? <a href="/register" class="transition-all duriation-150 hover:text-white font-medium">Register</a></p>
+                    <p class="text-gray-400">Don't Have An Account? <a href="/register" class="transition-all duriation-150 hover:text-white font-medium">Register</a></p>
                 </form>
                 <p class="text-red-600">
                     <?php echo htmlspecialchars($err); ?>
