@@ -17,7 +17,7 @@
 
     $err = $msg = "";
     if (isset($_POST["change_motd"])) {
-        $new_motd = $_POST["new_motd"];
+        $new_motd = mysqli_escape_string($mysqli, $_POST["new_motd"]);
         try {
             mysqli_query($mysqli, "UPDATE motd SET message='$new_motd'");
             $msg = "Updated MOTD Successfully!";
