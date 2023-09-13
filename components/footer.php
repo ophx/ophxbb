@@ -1,5 +1,3 @@
-<?php
-?>
 <footer class="bg-[#1f1f1f] shadow-lg px-4 py-2 w-full mt-20">
     <div class="container px-32 mx-auto flex items-center justify-between">
         <div>
