@@ -15,7 +15,7 @@
         $password = mysqli_escape_string($mysqli, $_POST["password"]);
         $confirm_password = mysqli_escape_string($mysqli, $_POST["confirm_password"]);
 
-
+        
     }
 ?>
 <!DOCTYPE html>

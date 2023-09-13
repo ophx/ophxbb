@@ -30,11 +30,16 @@
                     </a>
                 </li>
                 <li>
+                    <a href="/logout" class="transition-all duriation-150 flex items-center p-2 text-base font-medium <?php if($page==''){echo 'text-red-600';}else{echo 'text-gray-400 hover:text-red-600';} ?>">
+                        Logout
+                    </a>
+                </li>
+                <li>
                     <div class="border-b border-[#2f2f2f]"></div>
                 </li>
                 <li>
-                    <a href="/logout" class="transition-all duriation-150 flex items-center p-2 text-base font-medium <?php if($page==''){echo 'text-red-600';}else{echo 'text-gray-400 hover:text-red-600';} ?>">
-                        Logout
+                    <a href="https://discord.gg/" target="_blank" class="transition-all duriation-150 flex items-center p-2 text-base font-medium text-gray-400 hover:text-purple-600">
+                        Discord Server
                     </a>
                 </li>
                 <?php if ($_SESSION["role"] == "Administrator") { ?>
