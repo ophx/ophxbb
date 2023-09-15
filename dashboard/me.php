@@ -40,34 +40,58 @@
                 <div class="space-y-4">
                     <?php require_once("../components/dashboard/header.php"); ?>
 
-                    <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
-                        <div class="flex items-center gap-4">
-                            <div>
-                                <div class="w-[75px]">
-                                    <div class="relative h-[75px] w-[75px] overflow-hidden bg-[#2f2f2f] rounded shadow-lg">
-                                        <svg class="absolute h-[75px] w-[75px] text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
-                                        </svg>
+                    <div class="flex gap-4 items-start w-full">
+                        <div class="flex flex-col gap-4 w-full">
+                            <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
+                                <div class="flex items-center gap-4">
+                                    <div>
+                                        <div class="w-[75px]">
+                                            <div class="relative h-[75px] w-[75px] overflow-hidden bg-[#2f2f2f] rounded shadow-lg">
+                                                <svg class="absolute h-[75px] w-[75px] text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"></path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <p class="text-white text-xl"><?php echo htmlspecialchars($_SESSION["username"]); ?></p>
+                                        <p class="text-gray-400">UID <?php echo htmlspecialchars($_SESSION["id"]); ?></p>
                                     </div>
                                 </div>
-                            </div>
-                            <div>
-                                <p class="text-white text-xl"><?php echo htmlspecialchars($_SESSION["username"]); ?> <span class="text-gray-400">(<?php echo htmlspecialchars($_SESSION["role"]); ?>)</span></p>
-                                <p class="text-gray-400">UID <?php echo htmlspecialchars($_SESSION["id"]); ?></p>
-                                <p class="text-gray-400">Registered: <?php
+
+                                <div class="mt-4 mb-4 border-b border-[#2f2f2f]"></div>
+
+                                <p class="text-gray-400">
+                                    <span class="text-white">Role:</span> <?php echo htmlspecialchars($_SESSION["role"]); ?>
+                                    <?php if (htmlspecialchars($_SESSION["role"]) == "Administrator") { ?>
+                                        <span>&bullet;</span>
+                                        <span>All Permissions</span>
+                                    <?php } else { ?>
+                                        <span>&bullet;</span>
+                                        <span>Basic Permissions</span>
+                                    <?php } ?>
+                                </p>
+                                <p class="text-gray-400"><span class="text-white">Registered:</span> <?php echo htmlspecialchars($_SESSION["created_at"]); ?> (<?php
                                                                         $d = strtotime(htmlspecialchars($_SESSION["created_at"]));
                                                                         echo timeAgo($d);
-                                                                    ?></p>
+                                                                    ?>)
+                                </p>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
-                        <p class="text-white text-xl">Active Subscriptions</p>
-                    </div>
+                        <div class="flex flex-col gap-4 w-[1000px]">
+                            <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
+                                <p class="text-white text-xl">Active Subscriptions</p>
+                            </div>
 
-                    <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
-                        <p class="text-white text-xl">Purchase A Subscriptions</p>
+                            <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
+                                <p class="text-white text-xl">Purchase A Subscriptions</p>
+                            </div>
+
+                            <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
+                                <p class="text-white text-xl">Recent Devices</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
