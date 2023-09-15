@@ -7,6 +7,19 @@ Username: admin
 Password: 11
 ```
 
+# s.config.php Example:
+```php
+<?php
+    return (object) array(
+        "host" => "DB SERVER",
+        "username" => "DB USERNAME",
+        "password" => "DB PASSWORD",
+        "database" => "DB NAME",
+        "appName" => "WEBSITE NAME",
+        "recaptcha_sitekey" => "YOUR RECAPTCHA SITE KEY FROM GOOGLE",
+    );
+```
+
 # Features:
 #### Still In Development! :)
 
