@@ -44,14 +44,14 @@
 
                             header("location: /welcome");
                         } else {
-                            $password_err = "Invalid username or password!";
+                            $password_err = "Invalid Username Or Password!";
                         }
                     }
                 } else {
-                    $username_err = "Invalid username or password!";
+                    $username_err = "Invalid Username Or Password!";
                 }
             } else {
-                $err = "Could not execute!";
+                $err = "ERROR!";
             }
             $stmt->close();
         }

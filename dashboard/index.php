@@ -10,7 +10,7 @@
         exit;
     }
 
-    $motd = mysqli_query($mysqli, "SELECT * FROM motd");
+    $motd = mysqli_query($mysqli, "SELECT message FROM motd");
 ?>
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
@@ -60,7 +60,21 @@
                             </div>
                             <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
                                 <p class="text-white text-xl">Chatbox</p>
-                                <div class="h-[500px] overflow-y-auto overflow-x-hidden"></div>
+                                <div class="h-[500px] overflow-y-auto overflow-x-hidden">
+                                    <div id="chats"></div>
+                                </div>
+                                <div class="flex justify-between w-full gap-4 items-center">
+                                    <div class="w-full">
+                                        <input autocomplete="off" type="text" name="new_chat" id="new_chat" placeholder="Whats On Your Mind?" class="transition-all duriation-150 px-4 py-2 rounded text-white placeholder-gray-400 font-medium w-full flex outline-none border-none shadow-lg bg-[#2f2f2f]">
+                                    </div>
+                                    <div>
+                                        <button name="send_chat" class="transition-all duriation-150 px-4 py-2 rounded text-white font-medium text-center w-full flex items-center justify-center bg-purple-600 hover:bg-purple-700">
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+                                                <path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 

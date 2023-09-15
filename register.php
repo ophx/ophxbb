@@ -10,10 +10,35 @@
         exit;
     }
 
+    $err = $username_err = $password_err = $confirm_password_err = "";
     if (isset($_POST["register"])) {
-        $username = mysqli_escape_string($mysqli, $_POST["username"]);
-        $password = mysqli_escape_string($mysqli, $_POST["password"]);
-        $confirm_password = mysqli_escape_string($mysqli, $_POST["confirm_password"]);
+        if (strlen(trim(mysqli_escape_string($mysqli, $_POST["username"])) < 3)) {
+            $username_err = "Username Must Have Atleast 4 Characters!";
+        } elseif (strlen(trim(mysqli_escape_string($mysqli, $_POST["username"])) > 10)) {
+            $username_err = "Username Is Too Long!";
+        } else {
+            if ($stmt = $mysqli->prepare("SELECT id FROM users WHERE username = ?")) {
+                $stmt->bind_param("s", $param_username);
+                $param_username = mysqli_escape_string($mysqli, $_POST["username"]);
+                if ($stmt->execute()) {
+                    $stmt->store_result();
+                    if ($stmt->num_rows == 1) {
+                        $username_err = "Username Is Already Taken!";
+                    } else {
+                        $username = mysqli_escape_string($mysqli, $_POST["username"]);
+                    }
+                } else {
+                    $err = "ERROR!";
+                }
+                $stmt->close();
+            }
+        }
+
+        if (strlen(trim(mysqli_escape_string($mysqli, $_POST["password"])) < 7)) {
+            $password_err = "Password Must Have Atleast 8 Characters!";
+        } else {
+            $password = mysqli_escape_string($mysqli, $_POST["password"]);
+        }
 
         
     }
