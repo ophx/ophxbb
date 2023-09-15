@@ -40,7 +40,7 @@
             $password = mysqli_escape_string($mysqli, $_POST["password"]);
         }
 
-        
+
     }
 ?>
 <!DOCTYPE html>
@@ -68,9 +68,9 @@
                 <p class="text-white text-4xl">Get Started</p>
                 <p class="text-gray-400 mb-4">Glad To See You! :D</p>
                 <form action="register" method="post" class="space-y-4">
-                    <input type="text" name="username" id="username" placeholder="Username" class="transition-all duriation-150 px-4 py-2 rounded text-white placeholder-gray-400 font-medium w-full flex outline-none border-none shadow-lg bg-[#1f1f1f]">
-                    <input type="password" name="password" id="password" placeholder="Password" class="transition-all duriation-150 px-4 py-2 rounded text-white placeholder-gray-400 font-medium w-full flex outline-none border-none shadow-lg bg-[#1f1f1f]">
-                    <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" class="transition-all duriation-150 px-4 py-2 rounded text-white placeholder-gray-400 font-medium w-full flex outline-none border-none shadow-lg bg-[#1f1f1f]">
+                    <input required type="text" name="username" id="username" placeholder="Username" class="transition-all duriation-150 px-4 py-2 rounded text-white placeholder-gray-400 font-medium w-full flex outline-none border-none shadow-lg bg-[#1f1f1f]">
+                    <input required type="password" name="password" id="password" placeholder="Password" class="transition-all duriation-150 px-4 py-2 rounded text-white placeholder-gray-400 font-medium w-full flex outline-none border-none shadow-lg bg-[#1f1f1f]">
+                    <input required type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password" class="transition-all duriation-150 px-4 py-2 rounded text-white placeholder-gray-400 font-medium w-full flex outline-none border-none shadow-lg bg-[#1f1f1f]">
                     <div class="g-recaptcha" data-theme="dark" data-sitekey="<?php echo htmlspecialchars($config->recaptcha_sitekey); ?>" data-action="REGISTER"></div>
                     <button type="submit" name="register" class="transition-all duriation-150 px-4 py-2 rounded text-white font-medium text-center w-full flex items-center justify-center bg-purple-600 hover:bg-purple-700">
                         Get Started

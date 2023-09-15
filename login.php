@@ -83,9 +83,9 @@
                 <p class="text-white text-4xl">Login</p>
                 <p class="text-gray-400 mb-4">Welcome Back!</p>
                 <form action="login" method="post" class="space-y-4">
-                    <input value="<?php if (isset($_COOKIE["username"])) { echo $_COOKIE["username"]; } ?>" type="text" name="username" id="username" placeholder="Username" class="transition-all duriation-150 px-4 py-2 rounded text-white placeholder-gray-400 font-medium w-full flex outline-none border-none shadow-lg bg-[#1f1f1f]">
+                    <input required value="<?php if (isset($_COOKIE["username"])) { echo $_COOKIE["username"]; } ?>" type="text" name="username" id="username" placeholder="Username" class="transition-all duriation-150 px-4 py-2 rounded text-white placeholder-gray-400 font-medium w-full flex outline-none border-none shadow-lg bg-[#1f1f1f]">
                     <div class="flex">
-                        <input value="<?php if (isset($_COOKIE["password"])) { echo $_COOKIE["password"]; } ?>" type="password" name="password" id="password" placeholder="Password" class="transition-all duriation-150 px-4 py-2 rounded-l text-white placeholder-gray-400 font-medium w-full flex outline-none border-none shadow-lg bg-[#1f1f1f]">
+                        <input required value="<?php if (isset($_COOKIE["password"])) { echo $_COOKIE["password"]; } ?>" type="password" name="password" id="password" placeholder="Password" class="transition-all duriation-150 px-4 py-2 rounded-l text-white placeholder-gray-400 font-medium w-full flex outline-none border-none shadow-lg bg-[#1f1f1f]">
                         <div onclick="showHidePassword()" id="showhide" class="select-none text-sm cursor-pointer transition-all duriation-150 px-4 py-2 rounded-r text-gray-400 hover:text-white placeholder-gray-400 font-medium flex items-center outline-none border-none shadow-lg bg-[#1f1f1f]">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
                                 <path d="M12 15a3 3 0 100-6 3 3 0 000 6z" />
