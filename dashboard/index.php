@@ -40,63 +40,76 @@
                 <div class="space-y-4">
                     <?php require_once("../components/dashboard/header.php"); ?>
 
-                    <div class="grid grid-cols-3 gap-4">
-                        <?php while ($row = mysqli_fetch_array($motd)) { ?>
-                            <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
-                                <p class="text-white text-xl"><?php echo htmlspecialchars($row["message"]); ?></p>
-                                <p class="text-gray-400">MOTD</p>
+                    <div class="flex gap-4 w-full items-start">
+                        <div class="flex flex-col gap-4 w-full">
+                            <div class="grid grid-cols-3 gap-4 w-full">
+                                <?php while ($row = mysqli_fetch_array($motd)) { ?>
+                                    <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
+                                        <p class="text-white text-xl"><?php echo htmlspecialchars($row["message"]); ?></p>
+                                        <p class="text-gray-400">MOTD</p>
+                                    </div>
+                                <?php } ?>
+                                <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
+                                    <p class="text-white text-xl">1337</p>
+                                    <p class="text-gray-400">Registered Today</p>
+                                </div>
+                                <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
+                                    <p class="text-white text-xl">1337</p>
+                                    <p class="text-gray-400">Logged In Today</p>
+                                </div>
                             </div>
-                        <?php } ?>
-                        <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
-                            <p class="text-white text-xl">1337</p>
-                            <p class="text-gray-400">Registered Today</p>
+                            <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
+                                <p class="text-white text-xl">Chatbox</p>
+                                <div class="h-[500px] overflow-y-auto overflow-x-hidden"></div>
+                            </div>
                         </div>
-                        <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
-                            <p class="text-white text-xl">1337</p>
-                            <p class="text-gray-400">Logged In Today</p>
-                        </div>
-                    </div>
 
-                    <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
-                        <p class="text-white text-xl">Update History</p>
-                        <div class="h-[300px] overflow-y-auto overflow-x-hidden">
-                            <div class="space-y-4">
-                                <ul class="list-disc list-inside text-gray-400">
-                                    test &bullet; 1/1/1
-                                    <li>fdsfsdffd</li>
-                                </ul>
-                                <ul class="list-disc list-inside text-gray-400">
-                                    neta est &bullet; 1/1/1
-                                    <li>New UI</li>
-                                    <li>User Profiles</li>
-                                </ul>
-                                <ul class="list-disc list-inside text-gray-400">
-                                    test &bullet; 1/1/1
-                                    <li>fdsfsdffd</li>
-                                </ul>
-                                <ul class="list-disc list-inside text-gray-400">
-                                    neta est &bullet; 1/1/1
-                                    <li>New UI</li>
-                                    <li>User Profiles</li>
-                                </ul>
-                                <ul class="list-disc list-inside text-gray-400">
-                                    test &bullet; 1/1/1
-                                    <li>fdsfsdffd</li>
-                                </ul>
-                                <ul class="list-disc list-inside text-gray-400">
-                                    neta est &bullet; 1/1/1
-                                    <li>New UI</li>
-                                    <li>User Profiles</li>
-                                </ul>
-                                <ul class="list-disc list-inside text-gray-400">
-                                    test &bullet; 1/1/1
-                                    <li>fdsfsdffd</li>
-                                </ul>
-                                <ul class="list-disc list-inside text-gray-400">
-                                    neta est &bullet; 1/1/1
-                                    <li>New UI</li>
-                                    <li>User Profiles</li>
-                                </ul>
+                        <div class="flex flex-col gap-4 w-[1000px]">
+                            <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
+                                <iframe width="100%" height="300" src="https://www.youtube.com/embed/AX8Xm6maEYw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                            </div>
+                            <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
+                                <p class="text-white text-xl">Update History</p>
+                                <div class="h-[300px] overflow-y-auto overflow-x-hidden">
+                                    <div class="space-y-4">
+                                        <ul class="list-disc list-inside text-gray-400">
+                                            test &bullet; 1/1/1
+                                            <li>fdsfsdffd</li>
+                                        </ul>
+                                        <ul class="list-disc list-inside text-gray-400">
+                                            neta est &bullet; 1/1/1
+                                            <li>New UI</li>
+                                            <li>User Profiles</li>
+                                        </ul>
+                                        <ul class="list-disc list-inside text-gray-400">
+                                            test &bullet; 1/1/1
+                                            <li>fdsfsdffd</li>
+                                        </ul>
+                                        <ul class="list-disc list-inside text-gray-400">
+                                            neta est &bullet; 1/1/1
+                                            <li>New UI</li>
+                                            <li>User Profiles</li>
+                                        </ul>
+                                        <ul class="list-disc list-inside text-gray-400">
+                                            test &bullet; 1/1/1
+                                            <li>fdsfsdffd</li>
+                                        </ul>
+                                        <ul class="list-disc list-inside text-gray-400">
+                                            neta est &bullet; 1/1/1
+                                            <li>New UI</li>
+                                            <li>User Profiles</li>
+                                        </ul>
+                                        <ul class="list-disc list-inside text-gray-400">
+                                            test &bullet; 1/1/1
+                                            <li>fdsfsdffd</li>
+                                        </ul>
+                                        <ul class="list-disc list-inside text-gray-400">
+                                            neta est &bullet; 1/1/1
+                                            <li>New UI</li>
+                                            <li>User Profiles</li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
