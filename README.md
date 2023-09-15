@@ -25,7 +25,7 @@ Password: 11
 
 # Screenshots
 ![alt text](https://cdn.upload.systems/uploads/JKWbCPip.png)
-![alt text](https://cdn.upload.systems/uploads/HBYkrUKt.png)
+![alt text](https://cdn.upload.systems/uploads/EHNbqGO3.png)
 ![alt text](https://cdn.upload.systems/uploads/vKnuXUnb.png)
 ![alt text](https://cdn.upload.systems/uploads/IWAM481P.png)
 ![alt text](https://cdn.upload.systems/uploads/HXS6rsMv.png)
