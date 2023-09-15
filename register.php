@@ -12,10 +12,8 @@
 
     $err = $username_err = $password_err = $confirm_password_err = "";
     if (isset($_POST["register"])) {
-        if (strlen(trim(mysqli_escape_string($mysqli, $_POST["username"])) < 3)) {
+        if (strlen(mysqli_escape_string($mysqli, $_POST["username"])) < 3) {
             $username_err = "Username Must Have Atleast 4 Characters!";
-        } elseif (strlen(trim(mysqli_escape_string($mysqli, $_POST["username"])) > 10)) {
-            $username_err = "Username Is Too Long!";
         } else {
             if ($stmt = $mysqli->prepare("SELECT id FROM users WHERE username = ?")) {
                 $stmt->bind_param("s", $param_username);
@@ -34,13 +32,32 @@
             }
         }
 
-        if (strlen(trim(mysqli_escape_string($mysqli, $_POST["password"])) < 7)) {
+        if (strlen(mysqli_escape_string($mysqli, $_POST["password"])) < 7) {
             $password_err = "Password Must Have Atleast 8 Characters!";
         } else {
             $password = mysqli_escape_string($mysqli, $_POST["password"]);
         }
 
+        if ($password != mysqli_escape_string($mysqli, $_POST["confirm_password"])) {
+            $password_err = "Passwords Do Not Match!";
+        } else {
+            $confirm_password = mysqli_escape_string($mysqli, $_POST["confirm_password"]);
+        }
 
+        if (empty($username_err) && empty($password_err) && empty($confirm_password_err)) {
+            if ($stmt = $mysqli->prepare("INSERT INTO users (username, password) VALUES (?, ?)")) {
+                $stmt->bind_param("ss", $param_username, $param_password);
+                $param_username = $username;
+                $param_password = password_hash($password, PASSWORD_DEFAULT);
+                if ($stmt->execute()) {
+                    header("location: /login");
+                } else {
+                    $err = "ERROR!";
+                }
+            }
+        }
+
+        $mysqli->close();
     }
 ?>
 <!DOCTYPE html>
@@ -77,6 +94,12 @@
                     </button>
                     <p class="text-gray-400">Already Have An Account? <a href="/login" class="transition-all duriation-150 hover:text-white font-medium">Login</a></p>
                 </form>
+                <p class="text-red-600">
+                    <?php echo htmlspecialchars($err); ?>
+                    <?php echo htmlspecialchars($username_err); ?>
+                    <?php echo htmlspecialchars($password_err); ?>
+                    <?php echo htmlspecialchars($confirm_password_err); ?>
+                </p>
             </div>
         </main>
 
