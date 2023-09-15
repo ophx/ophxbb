@@ -54,6 +54,7 @@
                 } else {
                     $err = "ERROR!";
                 }
+                $stmt->close();
             }
         }
 
