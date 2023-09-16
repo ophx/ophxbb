@@ -16,6 +16,7 @@ Password: 11
         "password" => "DB PASSWORD",
         "database" => "DB NAME",
         "appName" => "WEBSITE NAME",
+        "appVersion" => "WEBSITE VERSION",
         "recaptcha_sitekey" => "YOUR RECAPTCHA SITE KEY FROM GOOGLE",
     );
 ```

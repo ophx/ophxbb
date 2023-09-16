@@ -5,5 +5,6 @@
         "password" => "",
         "database" => "ophxbb_panel",
         "appName" => "OphxBB",
+        "appVersion" => "1.0.0-beta",
         "recaptcha_sitekey" => "6Le4XRIoAAAAAMPZgLr4RIb1tKl4iMb8g3piOfWJ",
     );
