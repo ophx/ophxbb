@@ -11,6 +11,27 @@
     }
 
     $motd = mysqli_query($mysqli, "SELECT message FROM motd");
+
+    if (isset($_POST["send_chat"])) {
+        $uid = mysqli_escape_string($mysqli, $_SESSION["id"]);
+        $username = mysqli_escape_string($mysqli, $_SESSION["username"]);
+        $new_chat = mysqli_escape_string($mysqli, $_POST["new_chat"]);
+
+        if ($stmt = $mysqli->prepare("INSERT INTO shoutbox (username, uid, message) VALUES (?, ?, ?)")) {
+            $stmt->bind_param("sss", $param_username, $param_uid, $param_message);
+            $param_username = $username;
+            $param_uid = $uid;
+            $param_message = $new_chat;
+            $stmt->execute();
+            $stmt->close();
+        }
+    }
+
+    $chats = mysqli_query($mysqli, "SELECT * FROM shoutbox ORDER BY id DESC");
+
+    $mysqli->close();
+
+    require_once("../components/dashboard/functions.php");
 ?>
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
@@ -61,19 +82,44 @@
                             <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
                                 <p class="text-white text-xl">Chatbox</p>
                                 <div class="h-[500px] overflow-y-auto overflow-x-hidden">
-                                    <div id="chats"></div>
+                                    <div class="space-y-4">
+                                        <?php while ($row = mysqli_fetch_array($chats)) { ?>
+                                            <?php
+                                                $date = strtotime(htmlspecialchars($row["created_at"]));
+                                                echo "
+                                                    <div class='flex items-center gap-4'>
+                                                        <div>
+                                                            <div class='w-8'>
+                                                                <div class='relative h-8 w-8 overflow-hidden bg-[#2f2f2f] rounded shadow-lg'>
+                                                                    <svg class='absolute h-8 w-8 text-gray-400' fill='currentColor' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'>
+                                                                        <path fill-rule='evenodd' d='M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z' clip-rule='evenodd'></path>
+                                                                    </svg>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <p class='text-white'>".htmlspecialchars($row["username"])." <span class='text-gray-400 text-sm'>(".timeAgo($date).")</span></p>
+                                                            <p class='text-gray-400 text-sm'>".htmlspecialchars($row["message"])."</p>
+                                                        </div>
+                                                    </div>
+                                                ";
+                                            ?>
+                                        <?php } ?>
+                                    </div>
                                 </div>
-                                <div class="flex justify-between w-full gap-4 items-center">
-                                    <div class="w-full">
-                                        <input autocomplete="off" type="text" name="new_chat" id="new_chat" placeholder="Whats On Your Mind?" class="transition-all duriation-150 px-4 py-2 rounded text-white placeholder-gray-400 font-medium w-full flex outline-none border-none shadow-lg bg-[#2f2f2f]">
-                                    </div>
-                                    <div>
-                                        <button name="send_chat" class="transition-all duriation-150 px-4 py-2 rounded text-white font-medium text-center w-full flex items-center justify-center bg-purple-600 hover:bg-purple-700">
-                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
-                                                <path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z" />
-                                            </svg>
-                                        </button>
-                                    </div>
+                                <div>
+                                    <form action="/dashboard/" method="post" class="flex justify-between w-full gap-4 items-center">
+                                        <div class="w-full">
+                                            <input autocomplete="off" type="text" name="new_chat" id="new_chat" placeholder="Whats On Your Mind?" class="transition-all duriation-150 px-4 py-2 rounded text-white placeholder-gray-400 font-medium w-full flex outline-none border-none shadow-lg bg-[#2f2f2f]">
+                                        </div>
+                                        <div>
+                                            <button name="send_chat" class="transition-all duriation-150 px-4 py-2 rounded text-white font-medium text-center w-full flex items-center justify-center bg-purple-600 hover:bg-purple-700">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5">
+                                                    <path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z" />
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 15, 2023 at 09:26 PM
+-- Generation Time: Sep 16, 2023 at 06:39 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -36,7 +36,28 @@ CREATE TABLE `motd` (
 --
 
 INSERT INTO `motd` (`message`) VALUES
-('hello');
+('hello!');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `shoutbox`
+--
+
+CREATE TABLE `shoutbox` (
+  `id` int(11) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `uid` int(11) NOT NULL,
+  `message` varchar(255) NOT NULL,
+  `created_at` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `shoutbox`
+--
+
+INSERT INTO `shoutbox` (`id`, `username`, `uid`, `message`, `created_at`) VALUES
+(2, 'admin', 1, 'test', '2023-09-16 12:22:03');
 
 -- --------------------------------------------------------
 
@@ -65,6 +86,12 @@ INSERT INTO `users` (`id`, `username`, `password`, `created_at`, `avatar`, `role
 --
 
 --
+-- Indexes for table `shoutbox`
+--
+ALTER TABLE `shoutbox`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -73,6 +100,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `shoutbox`
+--
+ALTER TABLE `shoutbox`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`

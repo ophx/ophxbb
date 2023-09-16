@@ -24,7 +24,7 @@ Password: 11
 #### Still In Development! :)
 
 # Screenshots
-![alt text](https://cdn.upload.systems/uploads/JKWbCPip.png)
+![alt text](https://cdn.upload.systems/uploads/BpKAhCVU.png)
 ![alt text](https://cdn.upload.systems/uploads/EHNbqGO3.png)
 ![alt text](https://cdn.upload.systems/uploads/vKnuXUnb.png)
 ![alt text](https://cdn.upload.systems/uploads/IWAM481P.png)
