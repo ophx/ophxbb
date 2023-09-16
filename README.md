@@ -1,5 +1,6 @@
 # OphxBB
 #### A Cheat Panel Template  (With Mobile Styling).
+[My Discord Server](https://discord.gg/3DRqNct4vM)
 
 # Default Login:
 ```
@@ -21,8 +22,20 @@ Password: 11
     );
 ```
 
-# Features:
-#### Still In Development! :)
+# Database MOTD Structure:
+```
+(message)
+```
+
+# Database Shoutbox Structure:
+```
+(id, username, uid, message, created_at)
+```
+
+# Database Users Structure:
+```
+(id, username, password, created_at, avatar, role)
+```
 
 # Screenshots
 ![alt text](https://cdn.upload.systems/uploads/BpKAhCVU.png)
