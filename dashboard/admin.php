@@ -22,7 +22,7 @@
             mysqli_query($mysqli, "UPDATE motd SET message='$new_motd'");
             $msg = "Updated MOTD Successfully!";
         } catch (\Exception $e) {
-            $err = $e->getMessage();
+            $err = "ERROR!";
         }
     }
 ?>
