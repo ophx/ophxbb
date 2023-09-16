@@ -68,7 +68,7 @@
                                         <span>All Permissions</span>
                                     <?php } else { ?>
                                         <span>&bullet;</span>
-                                        <span>Basic Permissions</span>
+                                        <span>Limited Permissions</span>
                                     <?php } ?>
                                 </p>
                                 <p class="text-gray-400"><span class="text-white">Registered:</span> <?php echo htmlspecialchars($_SESSION["created_at"]); ?> (<?php
