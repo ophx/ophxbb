@@ -25,6 +25,14 @@
             $err = "ERROR!";
         }
     }
+
+    $tabTitle = "settings";
+    if (isset($_GET["settings"])) {
+        $tabTitle = "settings";
+    }
+    if (isset($_GET["stats"])) {
+        $tabTitle = "stats";
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
@@ -53,28 +61,45 @@
             <div class="ml-64 p-4 w-full">
                 <div class="space-y-4">
                     <?php require_once("../components/dashboard/header.php"); ?>
-
-                    <div class="grid grid-cols-3 gap-4">
-                        <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
-                            <p class="text-white text-xl">Change MOTD</p>
-                            <form action="admin" method="post" class="space-y-4">
-                                <input autocomplete="off" type="text" name="new_motd" id="new_motd" placeholder="New MOTD" class="transition-all duriation-150 px-4 py-2 rounded text-white placeholder-gray-400 font-medium w-full flex outline-none border-none shadow-lg bg-[#2f2f2f]">
-                                <button type="submit" name="change_motd" class="transition-all duriation-150 px-4 py-2 rounded text-white font-medium text-center w-full flex items-center justify-center bg-purple-600 hover:bg-purple-700">
-                                    Update
-                                </button>
-                                <?php if (!empty($err)) { ?>
-                                    <p class="text-red-600">
-                                        <?php echo htmlspecialchars($err); ?>
-                                    </p>
-                                <?php } ?>
-                                <?php if (!empty($msg)) { ?>
-                                    <p class="text-green-600">
-                                        <?php echo htmlspecialchars($msg); ?>
-                                    </p>
-                                <?php } ?>
-                            </form>
-                        </div>
+                    
+                    <div class="flex gap-4 w-full">
+                        <button onclick="window.location.href='?settings'" class="w-full transition-all duriation-150 px-4 py-2 text-sm font-medium rounded <?php echo ($tabTitle == "settings") ? "shadow-lg text-purple-600 bg-[#2f2f2f]" : "shadow-lg text-white hover:text-purple-600 bg-[#1f1f1f] hover:bg-[#2f2f2f]" ?>">
+                            Basic Admin Settings
+                        </button>
+                        <button onclick="window.location.href='?stats'" class="w-full transition-all duriation-150 px-4 py-2 text-sm font-medium rounded <?php echo ($tabTitle == "stats") ? "shadow-lg text-purple-600 bg-[#2f2f2f]" : "shadow-lg text-white hover:text-purple-600 bg-[#1f1f1f] hover:bg-[#2f2f2f]" ?>">
+                            <?php echo htmlspecialchars($config->appName); ?> Statistics 
+                        </button>
                     </div>
+                    
+                    <?php if ($tabTitle == "settings") { ?>
+                        <div class="grid grid-cols-3 gap-4">
+                            <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
+                                <p class="text-white text-xl">Change MOTD</p>
+                                <form action="admin" method="post" class="space-y-4">
+                                    <input autocomplete="off" type="text" name="new_motd" id="new_motd" placeholder="New MOTD" class="transition-all duriation-150 px-4 py-2 rounded text-white placeholder-gray-400 font-medium w-full flex outline-none border-none shadow-lg bg-[#2f2f2f]">
+                                    <button type="submit" name="change_motd" class="transition-all duriation-150 px-4 py-2 rounded text-white font-medium text-center w-full flex items-center justify-center bg-purple-600 hover:bg-purple-700">
+                                        Update
+                                    </button>
+                                    <?php if (!empty($err)) { ?>
+                                        <p class="text-red-600">
+                                            <?php echo htmlspecialchars($err); ?>
+                                        </p>
+                                    <?php } ?>
+                                    <?php if (!empty($msg)) { ?>
+                                        <p class="text-green-600">
+                                            <?php echo htmlspecialchars($msg); ?>
+                                        </p>
+                                    <?php } ?>
+                                </form>
+                            </div>
+                        </div>
+                    <?php } else if ($tabTitle == "stats") { ?>
+                        <div class="grid grid-cols-3 gap-4">
+                            <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
+                                <p class="text-white text-xl">stats</p>
+                            </div>
+                        </div>
+                    <?php } ?>
                 </div>
             </div>
         </div>
