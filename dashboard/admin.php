@@ -33,6 +33,14 @@
     if (isset($_GET["stats"])) {
         $tabTitle = "stats";
     }
+
+    $user_num_query = mysqli_query($mysqli, "SELECT count(1) FROM `users`");
+    $user_num_row = mysqli_fetch_row($user_num_query);
+    $user_num = $user_num_row[0];
+
+    $latest_mem_query = mysqli_query($mysqli, "SELECT `username` FROM `users` WHERE id = (SELECT MAX(id) FROM `users`)");
+    $latest_mem_row = mysqli_fetch_row($latest_mem_query);
+    $latest_mem = $latest_mem_row[0];
 ?>
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
@@ -96,7 +104,20 @@
                     <?php } else if ($tabTitle == "stats") { ?>
                         <div class="grid grid-cols-3 gap-4">
                             <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
-                                <p class="text-white text-xl">stats</p>
+                                <p class="text-white text-xl"><?php echo htmlspecialchars($user_num); ?></p>
+                                <p class="text-gray-400">Users</p>
+                            </div>
+                            <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
+                                <p class="text-white text-xl"><?php echo htmlspecialchars($latest_mem); ?></p>
+                                <p class="text-gray-400">Recently Joined</p>
+                            </div>
+                            <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
+                                <p class="text-white text-xl">1337</p>
+                                <p class="text-gray-400">Registered Today</p>
+                            </div>
+                            <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
+                                <p class="text-white text-xl">1337</p>
+                                <p class="text-gray-400">Logged In Today</p>
                             </div>
                         </div>
                     <?php } ?>
