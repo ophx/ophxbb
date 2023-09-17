@@ -30,6 +30,9 @@
     if (isset($_GET["settings"])) {
         $tabTitle = "settings";
     }
+    if (isset($_GET["users"])) {
+        $tabTitle = "users";
+    }
     if (isset($_GET["stats"])) {
         $tabTitle = "stats";
     }
@@ -41,6 +44,10 @@
     $latest_mem_query = mysqli_query($mysqli, "SELECT `username` FROM `users` WHERE id = (SELECT MAX(id) FROM `users`)");
     $latest_mem_row = mysqli_fetch_row($latest_mem_query);
     $latest_mem = $latest_mem_row[0];
+
+    $user_list = mysqli_query($mysqli, "SELECT * FROM `users` ORDER BY id DESC");
+
+    require_once("../components/dashboard/functions.php");
 ?>
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
@@ -74,6 +81,9 @@
                         <button onclick="window.location.href='?settings'" class="w-full transition-all duriation-150 px-4 py-2 text-sm font-medium rounded <?php echo ($tabTitle == "settings") ? "shadow-lg text-purple-600 bg-[#2f2f2f]" : "shadow-lg text-white hover:text-purple-600 bg-[#1f1f1f] hover:bg-[#2f2f2f]" ?>">
                             Basic Admin Settings
                         </button>
+                        <button onclick="window.location.href='?users'" class="w-full transition-all duriation-150 px-4 py-2 text-sm font-medium rounded <?php echo ($tabTitle == "users") ? "shadow-lg text-purple-600 bg-[#2f2f2f]" : "shadow-lg text-white hover:text-purple-600 bg-[#1f1f1f] hover:bg-[#2f2f2f]" ?>">
+                            User List 
+                        </button>
                         <button onclick="window.location.href='?stats'" class="w-full transition-all duriation-150 px-4 py-2 text-sm font-medium rounded <?php echo ($tabTitle == "stats") ? "shadow-lg text-purple-600 bg-[#2f2f2f]" : "shadow-lg text-white hover:text-purple-600 bg-[#1f1f1f] hover:bg-[#2f2f2f]" ?>">
                             <?php echo htmlspecialchars($config->appName); ?> Statistics 
                         </button>
@@ -100,6 +110,53 @@
                                     <?php } ?>
                                 </form>
                             </div>
+                        </div>
+                    <?php } else if ($tabTitle == "users") { ?>
+                        <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
+                            <p class="text-white text-xl">User List</p>
+                            <table class="w-full text-left text-gray-400">
+                                <thead class="bg-[#2f2f2f] shadow-lg">
+                                    <tr>
+                                        <th scope="col" class="px-4 py-2 rounded-l">
+                                            ID
+                                        </th>
+                                        <th scope="col" class="px-4 py-2">
+                                            Username
+                                        </th>
+                                        <th scope="col" class="px-4 py-2">
+                                            Created At
+                                        </th>
+                                        <th scope="col" class="px-4 py-2">
+                                            Role
+                                        </th>
+                                        <th scope="col" class="px-4 py-2 rounded-r">
+                                            Actions
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class="font-normal">
+                                    <?php while ($row = mysqli_fetch_array($user_list)) { ?>
+                                        <tr class="border-b border-[#2f2f2f]">
+                                            <td class="px-4 py-2">
+                                                <?php echo htmlspecialchars($row["id"]); ?>
+                                            </td>
+                                            <td class="px-4 py-2">
+                                                <?php echo htmlspecialchars($row["username"]); ?>
+                                            </td>
+                                            <td class="px-4 py-2">
+                                                <?php echo htmlspecialchars($row["created_at"]); ?>
+                                                (<?php
+                                                    $d = strtotime(htmlspecialchars($row["created_at"]));
+                                                    echo timeAgo($d);
+                                                ?>)
+                                            </td>
+                                            <td class="px-4 py-2">
+                                                <?php echo htmlspecialchars($row["role"]); ?>
+                                            </td>
+                                        </tr>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
                         </div>
                     <?php } else if ($tabTitle == "stats") { ?>
                         <div class="grid grid-cols-3 gap-4">
