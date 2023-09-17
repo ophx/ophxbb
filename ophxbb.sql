@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 17, 2023 at 06:30 AM
+-- Generation Time: Sep 17, 2023 at 06:56 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -88,6 +88,7 @@ INSERT INTO `shoutbox` (`id`, `username`, `uid`, `message`, `created_at`) VALUES
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
+  `uuid` mediumtext NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `created_at` datetime NOT NULL DEFAULT current_timestamp(),
@@ -99,8 +100,8 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `created_at`, `avatar`, `role`) VALUES
-(1, 'admin', '$2y$10$SkZzi/xd9oO820xfk9cU3O.XXC38OVISh0nDfbGKaHUwghC2onnJK', '2023-09-11 18:52:14', '', 'Administrator');
+INSERT INTO `users` (`id`, `uuid`, `username`, `password`, `created_at`, `avatar`, `role`) VALUES
+(1, '171b5e1a-e59d-4db0-a8a5-0bf3c6e65495', 'admin', '$2y$10$SkZzi/xd9oO820xfk9cU3O.XXC38OVISh0nDfbGKaHUwghC2onnJK', '2023-09-11 18:52:14', '', 'Administrator');
 
 --
 -- Indexes for dumped tables
@@ -132,7 +133,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `devices`
 --
 ALTER TABLE `devices`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `shoutbox`

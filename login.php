@@ -80,7 +80,7 @@
             if ($stmt->execute()) {
                 $stmt->store_result();
                 if ($stmt->num_rows == 1) {
-                    $stmt->bind_result($id, $username, $hashed_password, $created_at, $avatar, $role);
+                    $stmt->bind_result($id, $uuid, $username, $hashed_password, $created_at, $avatar, $role);
                     if ($stmt->fetch()) {
                         if (password_verify($password, $hashed_password)) {
                             $geo = unserialize(file_get_contents("http://www.geoplugin.net/php.gp"));
@@ -93,6 +93,7 @@
                             session_start();
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;
+                            $_SESSION["uuid"] = $uuid;
                             $_SESSION["username"] = $username;
                             $_SESSION["hashed_password"] = $hashed_password;
                             $_SESSION["created_at"] = $created_at;

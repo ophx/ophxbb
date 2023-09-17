@@ -10,6 +10,16 @@
         exit;
     }
 
+    function UUIDv4() {
+		return sprintf('%04x%04x-%04x-%04x-%04x-%04x%04x%04x',
+            mt_rand(0, 0xffff), mt_rand(0, 0xffff),
+            mt_rand(0, 0xffff),
+            mt_rand(0, 0x0fff) | 0x4000,
+            mt_rand(0, 0x3fff) | 0x8000,
+            mt_rand(0, 0xffff), mt_rand(0, 0xffff), mt_rand(0, 0xffff)
+		);
+	}
+
     $err = $username_err = $password_err = $confirm_password_err = "";
     if (isset($_POST["register"])) {
         if (strlen(mysqli_escape_string($mysqli, $_POST["username"])) < 3) {
@@ -45,8 +55,9 @@
         }
 
         if (empty($username_err) && empty($password_err) && empty($confirm_password_err)) {
-            if ($stmt = $mysqli->prepare("INSERT INTO users (username, password) VALUES (?, ?)")) {
-                $stmt->bind_param("ss", $param_username, $param_password);
+            if ($stmt = $mysqli->prepare("INSERT INTO users (uuid, username, password) VALUES (?, ?, ?)")) {
+                $stmt->bind_param("sss", $param_uuid, $param_username, $param_password);
+                $param_uuid = UUIDv4();
                 $param_username = $username;
                 $param_password = password_hash($password, PASSWORD_DEFAULT);
                 if ($stmt->execute()) {

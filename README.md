@@ -39,7 +39,7 @@ Password: 11
 
 # Database Users Structure:
 ```
-(id, username, password, created_at, avatar, role)
+(id, uuid, username, password, created_at, avatar, role)
 ```
 
 # Screenshots
