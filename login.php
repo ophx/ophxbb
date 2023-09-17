@@ -10,6 +10,65 @@
         exit;
     }
 
+    // Get user browser info (https://gist.github.com/Balamir/4a19b3b0a4074ff113a08a92908302e2)
+    function getOS() { 
+        $user_agent = $_SERVER["HTTP_USER_AGENT"];
+        $os_platform = "Unknown OS";
+        $os_array = array(
+            '/windows nt 10/i'      =>  'Windows 10',
+            '/windows nt 6.3/i'     =>  'Windows 8.1',
+            '/windows nt 6.2/i'     =>  'Windows 8',
+            '/windows nt 6.1/i'     =>  'Windows 7',
+            '/windows nt 6.0/i'     =>  'Windows Vista',
+            '/windows nt 5.2/i'     =>  'Windows Server 2003/XP x64',
+            '/windows nt 5.1/i'     =>  'Windows XP',
+            '/windows xp/i'         =>  'Windows XP',
+            '/windows nt 5.0/i'     =>  'Windows 2000',
+            '/windows me/i'         =>  'Windows ME',
+            '/win98/i'              =>  'Windows 98',
+            '/win95/i'              =>  'Windows 95',
+            '/win16/i'              =>  'Windows 3.11',
+            '/macintosh|mac os x/i' =>  'Mac OS X',
+            '/mac_powerpc/i'        =>  'Mac OS 9',
+            '/linux/i'              =>  'Linux',
+            '/ubuntu/i'             =>  'Ubuntu',
+            '/iphone/i'             =>  'iPhone',
+            '/ipod/i'               =>  'iPod',
+            '/ipad/i'               =>  'iPad',
+            '/android/i'            =>  'Android',
+            '/blackberry/i'         =>  'BlackBerry',
+            '/webos/i'              =>  'Mobile'
+        );
+        foreach ( $os_array as $regex => $value ) { 
+            if ( preg_match($regex, $user_agent ) ) {
+                $os_platform = $value;
+            }
+        }
+        return $os_platform;
+    }
+    function getBrowser() {
+        $user_agent = $_SERVER["HTTP_USER_AGENT"];
+        $browser = "Unknown Browser";
+        $browser_array  = array(
+            '/msie/i'       =>  'Internet Explorer',
+            '/firefox/i'    =>  'Firefox',
+            '/safari/i'     =>  'Safari',
+            '/chrome/i'     =>  'Chrome',
+            '/edge/i'       =>  'Edge',
+            '/opera/i'      =>  'Opera',
+            '/netscape/i'   =>  'Netscape',
+            '/maxthon/i'    =>  'Maxthon',
+            '/konqueror/i'  =>  'Konqueror',
+            '/mobile/i'     =>  'Handheld Browser'
+        );
+        foreach ($browser_array as $regex => $value) { 
+            if ( preg_match( $regex, $user_agent )) {
+                $browser = $value;
+            }
+        }
+        return $browser;
+    }
+
     $err = $username_err = $password_err = "";
     if (isset($_POST["login"])) {
         $username = mysqli_escape_string($mysqli, $_POST["username"]);
@@ -24,6 +83,13 @@
                     $stmt->bind_result($id, $username, $hashed_password, $created_at, $avatar, $role);
                     if ($stmt->fetch()) {
                         if (password_verify($password, $hashed_password)) {
+                            $geo = unserialize(file_get_contents("http://www.geoplugin.net/php.gp"));
+                            $country = $geo["geoplugin_countryName"];
+                            $city = $geo["geoplugin_city"];
+                            $region = $geo["geoplugin_region"];
+                            $loginLocation = $country . ", " . $region . ", " . $city;
+                            mysqli_query($mysqli, "INSERT into devices (uid, os, browser, location) VALUES ('".$id."', '".getOS()."', '".getBrowser()."', '".$loginLocation."')");
+
                             session_start();
                             $_SESSION["loggedin"] = true;
                             $_SESSION["id"] = $id;

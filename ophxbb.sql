@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 16, 2023 at 06:39 PM
+-- Generation Time: Sep 17, 2023 at 06:30 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -20,6 +20,27 @@ SET time_zone = "+00:00";
 --
 -- Database: `ophxbb_panel`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `devices`
+--
+
+CREATE TABLE `devices` (
+  `id` int(11) NOT NULL,
+  `uid` int(11) NOT NULL,
+  `os` varchar(255) NOT NULL,
+  `browser` varchar(255) NOT NULL,
+  `location` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `devices`
+--
+
+INSERT INTO `devices` (`id`, `uid`, `os`, `browser`, `location`) VALUES
+(2, 1, 'Windows 10', 'Chrome', 'United States, N/A, N/A');
 
 -- --------------------------------------------------------
 
@@ -86,6 +107,12 @@ INSERT INTO `users` (`id`, `username`, `password`, `created_at`, `avatar`, `role
 --
 
 --
+-- Indexes for table `devices`
+--
+ALTER TABLE `devices`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `shoutbox`
 --
 ALTER TABLE `shoutbox`
@@ -100,6 +127,12 @@ ALTER TABLE `users`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `devices`
+--
+ALTER TABLE `devices`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `shoutbox`

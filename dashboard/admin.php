@@ -129,9 +129,6 @@
                                         <th scope="col" class="px-4 py-2">
                                             Role
                                         </th>
-                                        <th scope="col" class="px-4 py-2 rounded-r">
-                                            Actions
-                                        </th>
                                     </tr>
                                 </thead>
                                 <tbody class="font-normal">

@@ -22,6 +22,11 @@ Password: 11
     );
 ```
 
+# Database Devices Structure:
+```
+(id, uid, os, browser, location)
+```
+
 # Database MOTD Structure:
 ```
 (message)
@@ -38,9 +43,4 @@ Password: 11
 ```
 
 # Screenshots
-![alt text](https://cdn.upload.systems/uploads/BpKAhCVU.png)
-![alt text](https://cdn.upload.systems/uploads/EHNbqGO3.png)
-![alt text](https://cdn.upload.systems/uploads/vKnuXUnb.png)
-![alt text](https://cdn.upload.systems/uploads/IWAM481P.png)
-![alt text](https://cdn.upload.systems/uploads/HXS6rsMv.png)
-![alt text](https://cdn.upload.systems/uploads/9KVxQ8BB.png)
+#### Coming Soon!
