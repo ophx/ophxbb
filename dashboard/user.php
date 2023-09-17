@@ -93,7 +93,6 @@
 
                             <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
                                 <p class="text-white text-xl">Your Devices</p>
-                                <p class="text-gray-400">This shows all the devices that have logged into your account.</p>
                                 <table class="w-full text-left text-gray-400">
                                     <thead class="bg-[#2f2f2f] shadow-lg">
                                         <tr>
