@@ -10,7 +10,7 @@
         exit;
     }
 
-    $devices = mysqli_query($mysqli, "SELECT * FROM devices WHERE uid = ".$_SESSION["id"]." ORDER BY id DESC");
+    $devices = mysqli_query($mysqli, "SELECT * FROM devices WHERE uid = ".$_SESSION["id"]." ORDER BY id DESC LIMIT 5");
 
     require_once("../components/dashboard/functions.php");
 ?>
