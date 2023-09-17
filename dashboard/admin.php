@@ -120,6 +120,9 @@
                                         <th scope="col" class="px-4 py-2 rounded-l">
                                             ID
                                         </th>
+                                        <th scope="col" class="px-4 py-2 rounded-l">
+                                            UUID
+                                        </th>
                                         <th scope="col" class="px-4 py-2">
                                             Username
                                         </th>
@@ -136,6 +139,9 @@
                                         <tr class="border-b border-[#2f2f2f]">
                                             <td class="px-4 py-2">
                                                 <?php echo htmlspecialchars($row["id"]); ?>
+                                            </td>
+                                            <td class="px-4 py-2">
+                                                <?php echo htmlspecialchars($row["uuid"]); ?>
                                             </td>
                                             <td class="px-4 py-2">
                                                 <?php echo htmlspecialchars($row["username"]); ?>
