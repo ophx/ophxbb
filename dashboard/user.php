@@ -84,11 +84,8 @@
 
                         <div class="flex flex-col gap-4 w-[1000px]">
                             <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
-                                <p class="text-white text-xl">Active Subscriptions</p>
-                            </div>
-
-                            <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
-                                <p class="text-white text-xl">Purchase A Subscriptions</p>
+                                <p class="text-white text-xl">Lorem ipsum dolor</p>
+                                <p class="text-red-600">sit amet consectetur adipisicing elit</p>
                             </div>
 
                             <div class="bg-[#1f1f1f] shadow-lg rounded p-4">
