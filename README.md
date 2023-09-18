@@ -1,6 +1,6 @@
 # OphxBB
 #### A Cheat Panel Template  (With Mobile Styling).
-[My Discord Server](https://discord.gg/3DRqNct4vM)
+[![](https://dcbadge.vercel.app/api/server/3DRqNct4vM)](https://discord.gg/3DRqNct4vM)
 
 # Default Login:
 ```
